@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class HomeComponent {
 
-    firstName: string = 'Sonu';
+    firstName: string = '';
     salary: number = 10;
     isDisabled: boolean = true;
 
