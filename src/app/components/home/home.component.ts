@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+    firstName: string = 'Sonu';
+
 
 }
 

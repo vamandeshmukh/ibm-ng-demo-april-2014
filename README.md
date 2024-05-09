@@ -1,3 +1,42 @@
+# Angluar Training Notes 
+
+## Basics 
+
+ng
+component -  .ts file 
+template - .html file 
+
+component  also means, component, template, styles and testing files together in a folder 
+
+### data binding 
+
+from component to template 
+- interpolation - {{ }}
+- property binding  []
+
+from template to component 
+- event binding ()
+
+two way 
+- two way binding [()]
+
+
+###  common ng commands - 
+
+	ng new 
+	ng serve 
+	ng test 
+	ng build 
+
+	ng generate component login 
+	ng generate component components/login 
+
+	ng generate service 
+	ng generate <abc> 
+    
+
+
+
 # IbmNgApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
