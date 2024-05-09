@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-home',
@@ -8,11 +8,16 @@ import { Component } from '@angular/core';
 export class HomeComponent {
 
     firstName: string = 'Sonu';
-    isDisabled: boolean = false;
+    isDisabled: boolean = true;
 
-
-
-
-
+    constructor() {
+        console.log('constructor');
+        setTimeout(() => {
+            console.log('settimeout');
+            this.isDisabled = false;
+        }, 3000);
+    }
 }
+
+
 
