@@ -11,8 +11,8 @@ component  also means, component, template, styles and testing files together in
 ### data binding 
 
 from component to template 
-- interpolation - {{ }}
-- property binding  []
+- interpolation - {{ }} - render the stuff 
+- property binding  [] - work with elements 
 
 from template to component 
 - event binding ()

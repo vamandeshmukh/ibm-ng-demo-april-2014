@@ -3,6 +3,10 @@
 
 <div>
     <p> {{firstName}} </p>
-    <button [disabled]="isDisabled">Click me</button>
+    <!-- <button [disabled]="isDisabled">Click me</button> -->
+
+    <p>{{salary}}</p>
+
+    <button (click)="increaseSalary()">Increase Salary</button>
 
 </div>
