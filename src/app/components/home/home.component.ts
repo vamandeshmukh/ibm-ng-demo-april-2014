@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
 
 @Component({
     selector: 'app-home',
     standalone: true,
+    imports: [NgModel],
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
