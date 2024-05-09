@@ -35,7 +35,13 @@ two way
 	ng generate <abc> 
     
 
+to avoid cacheing during development, run on CMD -
 
+ng serve --configuration=development
+
+
+
+------------------------------------------------------------------------------------------
 
 # IbmNgApp
 
