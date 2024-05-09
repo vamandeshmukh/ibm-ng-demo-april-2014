@@ -8,6 +8,16 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent {
-  title = 'ibm-ng-app';
+
+  title: string = 'ibm-ng-app';
+
+  employee = {
+    firstName: 'Sonu',
+    salary: 10.50,
+    isIndian: false
+  }
+
 }
+
