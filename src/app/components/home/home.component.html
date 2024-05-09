@@ -2,6 +2,17 @@
 <p>Home works!</p>
 
 <div>
+    <p>Conditional Rendering in Angular</p>
+    <p *ngIf="empList"> Number of Employees: {{empList.length}} </p>
+
+    <div *ngIf="empList">
+        <p *ngFor="let emp of empList">
+            Name: {{emp.firstName}}, Salary: {{emp.salary}}
+        </p>
+    </div>
+</div>
+
+<div>
     <p> {{firstName}} </p>
     <button [disabled]="isDisabled">Click me</button>
 

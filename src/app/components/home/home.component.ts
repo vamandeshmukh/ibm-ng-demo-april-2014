@@ -1,13 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [FormsModule],
+    imports: [FormsModule, CommonModule],
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
+
+
+    // empList = '';
+
+    empList = [
+        { firstName: 'Sonu', salary: 10.50 },
+        { firstName: 'Monu', salary: 15.25 },
+        { firstName: 'Tonu', salary: 12.75 }
+    ];
+
 
     firstName: string = '';
     salary: number = 10;
@@ -26,6 +37,7 @@ export class HomeComponent {
         }, 3000);
     }
 }
+
 
 
 
