@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -9,4 +10,13 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
+  registerData: any = { username: '', password: '' };
+
+  constructor(private userService: UserService) { }
+
+  register = () => {
+
+    this.userService.register(this.registerData)
+      .subscribe({ next: () => { }, error: () => { } });
+  };
 }
