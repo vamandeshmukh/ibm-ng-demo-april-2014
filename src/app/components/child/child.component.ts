@@ -15,7 +15,7 @@ export class ChildComponent {
   parentDataInChild = '';
 
   @Output()
-  sendToParent = new EventEmitter<string>();
+  sendToParent = new EventEmitter<any>();
 
   sendDataToParent = () => {
     console.log(this.childData);

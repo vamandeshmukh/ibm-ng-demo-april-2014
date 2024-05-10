@@ -12,16 +12,12 @@ import { ChildComponent } from '../child/child.component';
 export class HomeComponent {
 
     parentData = 'Sonu';
-    childDataInPrent = '';
+    childDataInPrent: Event | any = '';
 
-    receiveData = (data: any) => {
+    receiveData = (data: Event) => {
         console.log(data);
         this.childDataInPrent = data;
-        // code 
     };
-
-
-
 }
 
 

@@ -4,7 +4,7 @@
 <p>Parent data in parent component: {{parentData}}</p>
 <p>Child data in parent component: {{childDataInPrent}}</p>
 
-<app-child (sendDataToParent)="receiveData($event)" [parentDataInChild]="parentData"></app-child>
+<app-child (sendToParent)="receiveData($event)" [parentDataInChild]="parentData"></app-child>
 
 <!-- <h1>Home Component</h1>
 <p>Home works!</p>
