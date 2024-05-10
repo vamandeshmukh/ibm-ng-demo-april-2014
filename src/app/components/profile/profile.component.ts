@@ -21,7 +21,10 @@ export class ProfileComponent {
 
     this.profileData = this.userService.getUserProfile()
       .subscribe({
-        next: (response) => { console.log(response); },
+        next: (response) => {
+          console.log(response);
+          
+        },
         error: (err) => { console.log(err); }
       });
 

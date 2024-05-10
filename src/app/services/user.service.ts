@@ -13,10 +13,11 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  // List<Employee> empList;
+
   getUserProfile = (): Observable<any> => {
     console.log('getUserProfile');
     return this.http.get(this.url);
-
-
   };
+  
 }

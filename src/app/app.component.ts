@@ -4,11 +4,12 @@ import { HomeComponent } from './components/home/home.component';
 import { MenubarComponent } from './components/menubar/menubar.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { LifeCycleComponent } from './life-cycle/life-cycle.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HomeComponent, MenubarComponent, LoginComponent, ProfileComponent],
+  imports: [RouterOutlet, HomeComponent, MenubarComponent, LoginComponent, ProfileComponent, LifeCycleComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
