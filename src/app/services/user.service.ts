@@ -1,5 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 // HttpClientModule
 
@@ -12,14 +13,10 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUserProfile = (): any => {
+  getUserProfile = (): Observable<any> => {
+    console.log('getUserProfile');
+    return this.http.get(this.url);
 
-    this.http.get(this.url)
-      .subscribe();
-
-
-
-    return null;
 
   };
 }

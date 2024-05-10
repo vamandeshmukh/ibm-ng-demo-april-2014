@@ -19,11 +19,18 @@ export class ProfileComponent {
 
   constructor(private userService: UserService) {
 
-    this.profileData = this.userService.getUserProfile();
+    this.profileData = this.userService.getUserProfile()
+      .subscribe({
+        next: (response) => { console.log(response); },
+        error: (err) => { console.log(err); }
+      });
 
+    // this.userService.getUserProfile()
+    // .subscribe({})
+
+    // this.userService.getUserProfile()
+    //   .subscribe({ next: () => { }, error: () => { } })
   }
-
-
 }
 
 
