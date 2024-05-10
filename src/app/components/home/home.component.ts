@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ChildComponent } from '../child/child.component';
 
 @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [FormsModule, CommonModule],
+    imports: [FormsModule, CommonModule, ChildComponent],
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
@@ -13,8 +14,13 @@ export class HomeComponent {
     parentData = 'Sonu';
     childDataInPrent = '';
 
+    receiveData = () => { 
+        console.log();
+        // code 
+    };
 
-    
+
+
 }
 
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -9,7 +9,16 @@ import { Component } from '@angular/core';
 })
 export class ChildComponent {
 
-  childData = 'Monu'
+  childData = 'Monu';
+
+  @Input()
   parentDataInChild = '';
+
+  @Output()
+  sendToParent = '';
+
+  sendDataToParent = () => {
+    console.log();
+  };
 
 }
