@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 import { UserService } from '../../services/user.service';
 
-
-
 @Component({
   selector: 'app-profile',
   standalone: true,
@@ -23,7 +21,7 @@ export class ProfileComponent {
       .subscribe({
         next: (response) => {
           console.log(response);
-          
+
         },
         error: (err) => { console.log(err); }
       });

@@ -17,4 +17,8 @@ export class LifeCycleComponent implements OnInit {
     console.log('ngOnInit');
   }
 
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy');
+  };
+
 }
