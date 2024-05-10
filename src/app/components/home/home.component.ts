@@ -14,8 +14,9 @@ export class HomeComponent {
     parentData = 'Sonu';
     childDataInPrent = '';
 
-    receiveData = () => { 
-        console.log();
+    receiveData = (data: any) => {
+        console.log(data);
+        this.childDataInPrent = data;
         // code 
     };
 

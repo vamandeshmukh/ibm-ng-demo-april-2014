@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -15,10 +15,11 @@ export class ChildComponent {
   parentDataInChild = '';
 
   @Output()
-  sendToParent = '';
+  sendToParent = new EventEmitter<string>();
 
   sendDataToParent = () => {
     console.log();
+    this.sendToParent.emit(this.childData);
   };
 
 }
