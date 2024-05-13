@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent {
 
   postRegisterMessage: string = '';
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   submitRegister(registerForm: any) {
     if (registerForm.valid) {
@@ -25,8 +26,11 @@ export class RegisterComponent {
         .subscribe({
           next: (response) => {
             console.log(response);
-            this.postRegisterMessage = `Hi ${response.username}! You've registered successfully.`;
+            this.postRegisterMessage = `Hi ${response.username}! You've registered successfully. Please login now.`;
             this.registerData = { username: '', password: '' };
+            setTimeout(() => {
+              this.router.navigate(['/login']);
+            }, 2000);
           },
           error: (error) => {
             console.log(error);

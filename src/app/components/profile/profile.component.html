@@ -1,8 +1,9 @@
 <h1>Profile Component</h1>
-<p>profile works!</p>
-
-<!-- <p>{{profileData.username}}</p> -->
-
+<div *ngIf="profileData">
+    <p>Username: {{profileData.username}}</p>
+    <p>First Name: {{profileData.firstName}}</p>
+    <p>Last Name:{{profileData.lastName}}</p>
+</div>
 
 <!-- <app-edit-profile></app-edit-profile>
 

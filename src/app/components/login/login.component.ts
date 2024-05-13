@@ -3,11 +3,12 @@ import { FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { FormBuilder } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],  
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -17,13 +18,12 @@ export class LoginComponent {
 
   postLoginMessage: string = '';
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
 
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-
   }
 
   submitLogin() {
@@ -33,8 +33,13 @@ export class LoginComponent {
         .subscribe({
           next: (response) => {
             console.log(response);
-            this.postLoginMessage = `Hi ${response.user.username}! You've logged in successfully.`;
+            this.userService.setProfile(response.user);
+            this.postLoginMessage = `Hi ${response.user.username}! You've logged in successfully. Please view your profile.`;
             this.loginForm.reset();
+            setTimeout(() => {
+              this.router.navigate(['/profile']);
+
+            }, 2000);
           },
           error: (error) => {
             console.log(error);
