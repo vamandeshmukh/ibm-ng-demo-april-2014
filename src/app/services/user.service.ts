@@ -17,17 +17,17 @@ export class UserService {
 
   register = (user: any): Observable<any> => {
     console.log(user);
-    return this.http.post(`{this.expressUrl}/register`, user);
+    return this.http.post(`${this.expressUrl}/register`, user);
   };
 
   login = (user: any): Observable<any> => {
     console.log(user);
-    return this.http.post(`{this.expressUrl}/login`, user);
+    return this.http.post(`${this.expressUrl}/login`, user);
   };
 
   updateProfile = (user: any): Observable<any> => {
     console.log(user);
-    return this.http.post(`{this.expressUrl}/update`, user);
+    return this.http.post(`${this.expressUrl}/update`, user);
   };
 
   // delete this methods afterwards 

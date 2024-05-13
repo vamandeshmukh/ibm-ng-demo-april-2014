@@ -2,6 +2,7 @@
 
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,17 +16,25 @@ export class LoginComponent {
   loginData = { username: '', password: '' };
   postLoginMessage: string = '';
 
+  constructor(private userService: UserService) { };
+
   submitLogin = () => {
     console.log(this.loginData);
-    if (this.loginData.username === 'sonu' && this.loginData.password === 'sonu') {
-      this.postLoginMessage = `Hi ${this.loginData.username}! You've logged in successfully.`;
-      this.loginData = { username: '', password: '' };
-    } else {
-      this.postLoginMessage = 'Invalid credentials!';
-      this.loginData = { username: '', password: '' };
-    }
-  };
-
+    this.userService.login(this.loginData)
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          this.postLoginMessage = `Hi ${response.user.username}! You've logged in successfully.`;
+          this.loginData = { username: '', password: '' };
+        },
+        error: (error) => {
+          console.log(error);
+          this.postLoginMessage = error;
+          this.loginData = { username: '', password: '' };
+        }
+      });
+  }
 }
+
 
 
