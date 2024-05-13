@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export class RegisterComponent {
 
   registerData = { username: '', password: '' };
+
   postRegisterMessage: string = '';
 
   constructor(private userService: UserService) { }

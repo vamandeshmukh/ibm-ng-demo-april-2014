@@ -14,13 +14,16 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent {
 
   loginForm: FormGroup;
+
   postLoginMessage: string = '';
 
   constructor(private fb: FormBuilder, private userService: UserService) {
+
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+
   }
 
   submitLogin() {
@@ -81,6 +84,7 @@ export class LoginComponent {
 //       });
 //   }
 // }
+
 
 
 
