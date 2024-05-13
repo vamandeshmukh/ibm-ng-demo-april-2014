@@ -23,13 +23,12 @@ export class UserService {
 
   updateProfile = (user: any): Observable<any> => {
     console.log(user);
-    return this.http.post(`${this.expressUrl}/update`, user);
+    return this.http.put(`${this.expressUrl}/update`, user);
   };
 
   getProfile = (): Observable<any> => {
     console.log('getUserProfile');
     return this.http.get('is-this-the-right-approach');
-    // return null;
   };
 
 
