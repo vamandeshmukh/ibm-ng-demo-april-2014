@@ -4,6 +4,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LifeCycleComponent } from './components/life-cycle/life-cycle.component';
 import { HomeComponent } from './components/home/home.component';
+import { Page404Component } from './components/page404/page404.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -12,6 +13,6 @@ export const routes: Routes = [
     { path: 'life', component: LifeCycleComponent },
     { path: 'home', redirectTo: '' },
     { path: '', component: HomeComponent },
-    { path: '**', component: HomeComponent }
+    { path: '**', component: Page404Component }
 ];
 

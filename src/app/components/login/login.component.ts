@@ -1,40 +1,86 @@
-// Vishesh Kumar 
-
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { FormBuilder } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule, CommonModule],  
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
-  loginData = { username: '', password: '' };
+  loginForm: FormGroup;
   postLoginMessage: string = '';
 
-  constructor(private userService: UserService) { };
+  constructor(private fb: FormBuilder, private userService: UserService) {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 
-  submitLogin = () => {
-    console.log(this.loginData);
-    this.userService.login(this.loginData)
-      .subscribe({
-        next: (response) => {
-          console.log(response);
-          this.postLoginMessage = `Hi ${response.user.username}! You've logged in successfully.`;
-          this.loginData = { username: '', password: '' };
-        },
-        error: (error) => {
-          console.log(error);
-          this.postLoginMessage = error;
-          this.loginData = { username: '', password: '' };
-        }
-      });
+  submitLogin() {
+    if (this.loginForm.valid) {
+      const loginData = this.loginForm.value;
+      this.userService.login(loginData)
+        .subscribe({
+          next: (response) => {
+            console.log(response);
+            this.postLoginMessage = `Hi ${response.user.username}! You've logged in successfully.`;
+            this.loginForm.reset();
+          },
+          error: (error) => {
+            console.log(error);
+            this.postLoginMessage = error.statusText;
+            this.loginForm.reset();
+          }
+        });
+    } else {
+      console.warn('Form is invalid');
+    }
   }
 }
+
+
+// import { Component } from '@angular/core';
+// import { FormsModule } from '@angular/forms';
+// import { UserService } from '../../services/user.service';
+
+// @Component({
+//   selector: 'app-login',
+//   standalone: true,
+//   imports: [FormsModule],
+//   templateUrl: './login.component.html',
+//   styleUrl: './login.component.css'
+// })
+// export class LoginComponent {
+
+//   loginData = { username: '', password: '' };
+//   postLoginMessage: string = '';
+
+//   constructor(private userService: UserService) { };
+
+//   submitLogin = () => {
+//     console.log(this.loginData);
+//     this.userService.login(this.loginData)
+//       .subscribe({
+//         next: (response) => {
+//           console.log(response);
+//           this.postLoginMessage = `Hi ${response.user.username}! You've logged in successfully.`;
+//           this.loginData = { username: '', password: '' };
+//         },
+//         error: (error) => {
+//           console.log(error);
+//           this.postLoginMessage = error;
+//           this.loginData = { username: '', password: '' };
+//         }
+//       });
+//   }
+// }
 
 
 

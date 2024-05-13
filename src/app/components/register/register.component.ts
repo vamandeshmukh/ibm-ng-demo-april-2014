@@ -1,51 +1,83 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
-  registerForm: FormGroup | any = '';
+  registerData = { username: '', password: '' };
+  postRegisterMessage: string = '';
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmpassword: ['', Validators.required],
-      address: this.formBuilder.group({
-        street: ['', Validators.required],
-        city: [{ value: '', disabled: true }],
-        state: [{ value: '', disabled: true }],
-        pincode: ['', Validators.required],
-      })
-    });
-  }
-
-  submitRegister = () => {
-    console.log(this.registerForm.value);
-    if (this.registerForm.valid) {
-      const registerData = this.registerForm.value;
-      this.userService.register(registerData)
-        .subscribe((resp) => {
-          console.log(resp);
-          alert(`Hi ${resp.username}! You've successfully registered. Redirecting to login...`);
-          this.registerForm.reset();
-          this.router.navigate(['login']);
-
+  submitRegister(registerForm: any) {
+    if (registerForm.valid) {
+      console.log(registerForm.value);  // Access form data using registerForm.value
+      this.userService.register(registerForm.value)
+        .subscribe({
+          next: (response) => {
+            console.log(response);
+            this.postRegisterMessage = `Hi ${response.username}! You've registered successfully.`;
+            this.registerData = { username: '', password: '' };
+          },
+          error: (error) => {
+            console.log(error);
+            if (error.status === 400) {
+              this.postRegisterMessage = 'Username already exists!';
+            } else {
+              this.postRegisterMessage = error.statusText;
+            }
+            this.registerData = { username: '', password: '' };
+          }
         });
     }
-  };
+  }
 }
 
 
+// import { Component } from '@angular/core';
+// import { FormsModule } from '@angular/forms';
+// import { UserService } from '../../services/user.service';
+
+// @Component({
+//   selector: 'app-register',
+//   standalone: true,
+//   imports: [FormsModule],
+//   templateUrl: './register.component.html',
+//   styleUrl: './register.component.css'
+// })
+// export class RegisterComponent {
+
+//   registerData = { username: '', password: '' };
+//   postRegisterMessage: string = '';
+
+//   constructor(private userService: UserService) { };
+
+//   submitRegister = () => {
+//     console.log(this.registerData);
+//     this.userService.register(this.registerData)
+//       .subscribe({
+//         next: (response) => {
+//           console.log(response);
+//           this.postRegisterMessage = `Hi ${response.username}! You've logged in successfully.`;
+//           this.registerData = { username: '', password: '' };
+//         },
+//         error: (error) => {
+//           console.log(error);
+//           if (error.status === 400)
+//             this.postRegisterMessage = 'Username alredy exists!';
+//           else
+//             this.postRegisterMessage = error.statusText;
+//           this.registerData = { username: '', password: '' };
+//         }
+//       });
+//   }
+// }
 
