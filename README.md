@@ -4,6 +4,7 @@
 
  Attendance Management System 
 
+
 ng
 component -  .ts file 
 template - .html file 

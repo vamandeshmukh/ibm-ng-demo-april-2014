@@ -1,3 +1,5 @@
+// Vishesh Kumar 
+
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -12,7 +14,6 @@ export class LoginComponent {
 
   loginData = { username: '', password: '' };
   postLoginMessage: string = '';
-
 
   submitLogin = () => {
     console.log(this.loginData);

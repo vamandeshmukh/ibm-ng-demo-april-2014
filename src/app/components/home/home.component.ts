@@ -10,7 +10,14 @@ import { FormsModule } from '@angular/forms';
 })
 export class HomeComponent {
 
-    isThere: boolean = true;
+    empList = [
+        { id: 101, name: 'Sonu', salary: 10.50 },
+        { id: 102, name: 'Monu', salary: 12.50 },
+        { id: 103, name: 'Tonu', salary: 15.50 },
+        { id: 104, name: 'Ponu', salary: 13.50 },
+    ];
+
+    
 
 
 }

@@ -1,13 +1,41 @@
 <h1>Home Component</h1>
 
-<p>asdf</p>
-
 <div>
-    <p *ngIf="true">Display this element</p>
+    <h4>Employees data: </h4>
+    <p *ngFor="let e of empList">
+        <span> {{e.name | uppercase }} </span>
+        <span *ngIf="e.salary > 13"> {{e.salary | currency : 'INR'}}/- </span>
+    </p>
 </div>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+    <h4>Employees data: </h4>
+    <p *ngFor="let emp of empList">
+        <span>{{emp.name }} </span>
+        <span *ngIf="emp.salary > 13"> {{emp.salary | currency : 'INR'}}/- </span>
+    </p>
+</div> -->
 
 
 <!-- <h1>Home Component</h1>
