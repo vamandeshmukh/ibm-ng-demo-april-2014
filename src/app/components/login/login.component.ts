@@ -38,7 +38,6 @@ export class LoginComponent {
             this.loginForm.reset();
             setTimeout(() => {
               this.router.navigate(['/profile']);
-
             }, 2000);
           },
           error: (error) => {

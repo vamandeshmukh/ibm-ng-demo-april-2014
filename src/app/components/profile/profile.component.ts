@@ -18,7 +18,7 @@ export class ProfileComponent {
 
   constructor(private userService: UserService) {
 
-    this.profileData = this.profileData = this.userService.getProfile();
+    this.profileData = this.userService.getProfile();
     console.log(this.profileData);
   }
 

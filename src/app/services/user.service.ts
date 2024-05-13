@@ -8,9 +8,20 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   private expressUrl: string = 'http://localhost:2000';
+
   private loggedInUserProfile: any;
 
   constructor(private http: HttpClient) { }
+
+  getProfile = (): any => {
+    console.log(this.loggedInUserProfile);
+    return this.loggedInUserProfile;
+  };
+
+  setProfile = (user: any): void => {
+    console.log(user);
+    this.loggedInUserProfile = user;
+  }
 
   register = (user: any): Observable<any> => {
     console.log(user);
@@ -27,25 +38,10 @@ export class UserService {
     return this.http.put(`${this.expressUrl}/update`, user);
   };
 
-  getProfile = (): any => {
-    console.log(this.loggedInUserProfile);
-    if (this.loggedInUserProfile)
-      return this.loggedInUserProfile;
-    else
-      return null;
-  };
-
-  setProfile = (user: any): void => {
-    console.log(user);
-    this.loggedInUserProfile = user;
-  }
-
-
   logout = () => {
     console.log('logout');
     this.loggedInUserProfile = { username: '', password: '' };
   };
-
 
 }
 

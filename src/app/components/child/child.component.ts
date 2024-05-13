@@ -22,4 +22,9 @@ export class ChildComponent {
     this.sendToParent.emit(this.childData);
   };
 
+  @Output()
+  myEvent = new EventEmitter<any>();
+
+  sendData = () => { this.myEvent.emit('abc'); }
+
 }
