@@ -1,24 +1,43 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ChildComponent } from '../child/child.component';
 
 @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [FormsModule, CommonModule, ChildComponent],
+    imports: [FormsModule, CommonModule],
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
 
-    parentData = 'Sonu';
-    childDataInPrent: Event | any = '';
+    isThere: boolean = true;
 
-    receiveData = (data: Event) => {
-        console.log(data);
-        this.childDataInPrent = data;
-    };
+
 }
+
+
+
+// import { CommonModule } from '@angular/common';
+// import { Component } from '@angular/core';
+// import { FormsModule } from '@angular/forms';
+// import { ChildComponent } from '../child/child.component';
+
+// @Component({
+//     selector: 'app-home',
+//     standalone: true,
+//     imports: [FormsModule, CommonModule, ChildComponent],
+//     templateUrl: './home.component.html'
+// })
+// export class HomeComponent {
+
+//     parentData = 'Sonu';
+//     childDataInPrent: Event | any = '';
+
+//     receiveData = (data: Event) => {
+//         console.log(data);
+//         this.childDataInPrent = data;
+//     };
+// }
 
 
 

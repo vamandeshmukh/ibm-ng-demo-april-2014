@@ -27,7 +27,13 @@ export class UserService {
   getUserProfile = (): Observable<any> => {
     console.log('getUserProfile');
     return this.http.get(this.expressUrl);
+    // return null;
   };
+
+  logout = () => {
+    // code 
+  };
+
 
 }
 
