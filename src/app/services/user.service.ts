@@ -35,7 +35,7 @@ export class UserService {
 
   updateProfile = (user: any): Observable<any> => {
     console.log(user);
-    return this.http.put(`${this.expressUrl}/update`, user);
+    return this.http.put(`${this.expressUrl}/users/${user._id}`, user);
   };
 
   logout = () => {
