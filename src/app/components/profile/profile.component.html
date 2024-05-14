@@ -6,6 +6,10 @@
     <p>Last Name:{{profileData.lastName}}</p>
 </div>
 
+<div *ngIf="!profileData">
+    <p>Data is loading...</p>
+</div>
+
 <!-- <app-edit-profile></app-edit-profile>
 
 <hr />

@@ -33,7 +33,7 @@ export class LoginComponent {
         .subscribe({
           next: (response) => {
             console.log(response);
-            this.userService.setProfile(response.user);
+            this.userService.setProfile(response.user); // save data to profile 
             this.postLoginMessage = `Hi ${response.user.username}! You've logged in successfully. Please view your profile.`;
             this.loginForm.reset();
             setTimeout(() => {
@@ -88,6 +88,7 @@ export class LoginComponent {
 //       });
 //   }
 // }
+
 
 
 
