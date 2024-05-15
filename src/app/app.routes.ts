@@ -9,18 +9,22 @@ import { Page404Component } from './components/page404/page404.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { authGuard } from './guards/auth.guard';
+import { loginGuard } from './guards/login.guard';
+import { EmployeeComponent } from './components/employee/employee.component';
 
 export const routes: Routes = [
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
+    { path: 'register', component: RegisterComponent, canActivate: [loginGuard] },
+    { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
+    { path: 'logout', component: LogoutComponent, canActivate: [authGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
     { path: 'edit', component: EditProfileComponent, canActivate: [authGuard] },
+    { path: 'emp', component: EmployeeComponent, canActivate: [authGuard] },
     { path: 'life', component: LifeCycleComponent, canActivate: [authGuard] },
-    { path: 'logout', component: LogoutComponent, canActivate: [authGuard] },
     { path: 'home', redirectTo: '' },
     { path: '', component: HomeComponent },
     { path: '**', component: Page404Component }
 ];
+
 
 
 

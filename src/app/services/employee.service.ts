@@ -21,5 +21,5 @@ export class EmployeeService {
     return this.http.get(`${this.springbootUrl}/emp/get-emp-by-id/${id}`);
   };
 
-
 }
+
