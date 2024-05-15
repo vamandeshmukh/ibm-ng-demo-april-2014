@@ -11,11 +11,25 @@ import { Router } from '@angular/router';
 })
 export class LogoutComponent {
 
+  postLoginMessage: string = '';
+
   constructor(private userService: UserService, private router: Router) { }
 
   logoutUser = () => {
     console.log('logoutUser');
-    this.userService.logout();
-    this.router.navigate(['/home']);
+    const response = confirm('Are you sure to logout?');
+    if (response) {
+      this.userService.logout();
+      this.postLoginMessage = 'You have successfully logged out; redirecting to login...'
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 1000);
+    }
+    else {
+      setTimeout(() => {
+        this.postLoginMessage = 'Logout cancelled; going back...';
+        this.router.navigate(['.']);
+      }, 1000);
+    }
   };
 }

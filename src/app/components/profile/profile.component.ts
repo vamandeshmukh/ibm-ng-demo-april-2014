@@ -12,8 +12,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit {
+  
   profileData: any;
+
   constructor(private userService: UserService) { }
+ 
   ngOnInit() {
     this.userService.getProfile()
       .subscribe({
@@ -136,6 +139,7 @@ export class ProfileComponent implements OnInit {
 // //     //   .subscribe({ next: () => { }, error: () => { } })
 // //   }
 // // }
+
 
 
 

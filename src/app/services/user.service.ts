@@ -7,9 +7,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class UserService {
 
+  private loginStatus: boolean = false;
   private expressUrl: string = 'http://localhost:2000';
   private userProfileSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   private loggedInUserProfile: Observable<any> = this.userProfileSubject.asObservable();
+
 
   constructor(private http: HttpClient) { }
 
@@ -30,6 +32,7 @@ export class UserService {
 
   login = (user: any): Observable<any> => {
     console.log(user);
+    this.loginStatus = true;
     return this.http.post(`${this.expressUrl}/login`, user);
   };
 
@@ -40,8 +43,14 @@ export class UserService {
 
   logout = () => {
     console.log(this.loggedInUserProfile);
+    this.loginStatus = false;
     this.userProfileSubject.next(null);
     console.log(this.loggedInUserProfile);
+  };
+
+  getLoginStatus = () => {
+    console.log(this.loginStatus);
+    return this.loginStatus;
   };
 
 }

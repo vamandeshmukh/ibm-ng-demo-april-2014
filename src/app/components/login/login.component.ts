@@ -12,22 +12,17 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  loginForm: FormGroup | any;
+  loginForm: FormGroup;
 
   postLoginMessage: string = '';
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
-
-  ngOnInit(): void {
-
-
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-
   }
 
   submitLogin() {
@@ -38,7 +33,7 @@ export class LoginComponent implements OnInit {
           next: (response) => {
             console.log(response);
             this.userService.setProfile(response.user); // save data to profile 
-            this.postLoginMessage = `Hi ${response.user.username}! You've logged in successfully. Please view your profile.`;
+            this.postLoginMessage = `Hi ${response.user.username}! You've logged in successfully. Showing your profile....`;
             this.loginForm.reset();
             setTimeout(() => {
               this.router.navigate(['/profile']);
@@ -92,6 +87,7 @@ export class LoginComponent implements OnInit {
 //       });
 //   }
 // }
+
 
 
 

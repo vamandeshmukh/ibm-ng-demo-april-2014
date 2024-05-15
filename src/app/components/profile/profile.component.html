@@ -1,9 +1,21 @@
 <h1>Profile Component</h1>
 
 <div *ngIf="profileData">
-    <p>Username: {{profileData.username}}</p>
-    <p>First Name: {{profileData.firstName}}</p>
-    <p>Last Name:{{profileData.lastName}}</p>
+    <hr />
+    <div style="display: flex; margin-left: 5%; margin-right: 5%;">
+        <div style="flex: 1;">
+            <h1>User Profile</h1>
+            <p>Username: {{profileData.username}}</p>
+            <p>First Name: {{profileData.firstName}}</p>
+            <p>Last Name: {{profileData.lastName}}</p>
+            <p>Email: <a href="mailto:{{profileData.email}}">{{profileData.email}}</a></p>
+            <p>Phone: {{profileData.phone}}</p>
+        </div>
+        <div style="flex: 1;">
+            <img style="vertical-align: baseline;" [src]="profileData.avatar" [alt]="profileData.firstName">
+        </div>
+    </div>
+    <hr />
 </div>
 
 <div *ngIf="!profileData">
@@ -11,8 +23,9 @@
 </div>
 
 <div>
-    <app-edit-profile></app-edit-profile>
+    <!-- <app-edit-profile></app-edit-profile> -->
 </div>
+
 
 <!-- <app-edit-profile></app-edit-profile>
 
