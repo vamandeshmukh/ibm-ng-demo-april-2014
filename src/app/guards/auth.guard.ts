@@ -11,14 +11,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   if (userService.getLoginStatus()) {
     console.log('logged in');
     console.log(state.url);
-    if (state.url === '/login' || state.url === '/register') {
-      console.log(state.url);
-      router.navigate(['/profile']);
-      return false;
-    }
-    else {
-      return true;
-    }
+    return true;
   }
   else {
     console.log('not logged in');
