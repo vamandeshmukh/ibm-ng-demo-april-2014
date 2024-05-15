@@ -8,10 +8,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class UserService {
 
   private loginStatus: boolean = false;
+
   private expressUrl: string = 'http://localhost:2000';
   private userProfileSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   private loggedInUserProfile: Observable<any> = this.userProfileSubject.asObservable();
-
 
   constructor(private http: HttpClient) { }
 
