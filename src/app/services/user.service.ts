@@ -57,52 +57,81 @@ export class UserService {
 
 
 
+
+
 // import { HttpClient } from '@angular/common/http';
 // import { Injectable } from '@angular/core';
-// import { Observable } from 'rxjs';
+// import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 // @Injectable({
 //   providedIn: 'root'
 // })
 // export class UserService {
-
+//   private loginStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.hasValidToken());
 //   private expressUrl: string = 'http://localhost:2000';
-
-
-//   private loggedInUserProfile: any;
+//   private userProfileSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+//   private loggedInUserProfile: Observable<any> = this.userProfileSubject.asObservable();
 
 //   constructor(private http: HttpClient) { }
 
-//   getProfile = (): any => {
-//     console.log(this.loggedInUserProfile);
+//   private hasValidToken(): boolean {
+//     const token = localStorage.getItem('authToken');
+//     const expiration = localStorage.getItem('authTokenExpiration');
+//     if (token && expiration) {
+//       const now = new Date().getTime();
+//       return now < Number(expiration);
+//     }
+//     return false;
+//   }
+
+//   getProfile = (): Observable<any> => {
 //     return this.loggedInUserProfile;
 //   };
 
 //   setProfile = (user: any): void => {
-//     console.log(user);
-//     this.loggedInUserProfile = user;
-//   }
+//     this.userProfileSubject.next(user);
+//   };
 
 //   register = (user: any): Observable<any> => {
-//     console.log(user);
 //     return this.http.post(`${this.expressUrl}/register`, user);
 //   };
 
 //   login = (user: any): Observable<any> => {
-//     console.log(user);
-//     return this.http.post(`${this.expressUrl}/login`, user);
+//     return this.http.post(`${this.expressUrl}/login`, user).pipe(
+//       tap((response: any) => {
+//         if (response && response.token) {
+//           this.setSession(response.token);
+//           this.loginStatus.next(true);
+//         }
+//       })
+//     );
 //   };
 
 //   updateProfile = (user: any): Observable<any> => {
-//     console.log(user);
-//     return this.http.put(`${this.expressUrl}/update`, user);
+//     return this.http.put(`${this.expressUrl}/users/${user._id}`, user);
 //   };
 
 //   logout = () => {
-//     console.log('logout');
-//     this.loggedInUserProfile = { username: '', password: '' };
+//     this.clearSession();
+//     this.loginStatus.next(false);
+//     this.userProfileSubject.next(null);
 //   };
 
+//   getLoginStatus = (): Observable<boolean> => {
+//     return this.loginStatus.asObservable();
+//   };
+
+//   private setSession(token: string): void {
+//     const now = new Date().getTime();
+//     const expiration = now + 10 * 60 * 1000; // 10 minutes from now
+//     localStorage.setItem('authToken', token);
+//     localStorage.setItem('authTokenExpiration', expiration.toString());
+//   }
+
+//   private clearSession(): void {
+//     localStorage.removeItem('authToken');
+//     localStorage.removeItem('authTokenExpiration');
+//   }
 // }
 
 

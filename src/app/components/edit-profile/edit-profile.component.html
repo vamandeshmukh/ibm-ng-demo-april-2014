@@ -6,7 +6,8 @@
         <form [formGroup]="editProForm" (ngSubmit)="submitEditPro()">
             <div>
                 <label for="username">Username:</label>
-                <input type="text" id="username" formControlName="username" placeholder="Enter your username" readonly autofocus>
+                <input type="text" id="username" formControlName="username" placeholder="Enter your username" readonly
+                    autofocus>
             </div>
             <div>
                 <label for="firstName">firstName:</label>
@@ -23,6 +24,10 @@
             <div>
                 <label for="phone">phone:</label>
                 <input type="text" id="phone" formControlName="phone" placeholder="Enter your phone">
+            </div>
+            <div>
+                <label for="avatar">avatar:</label>
+                <input type="text" id="avatar" formControlName="avatar" placeholder="Enter your avatar">
             </div>
             <div>
                 <input type="submit" value="Update profile" />

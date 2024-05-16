@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class MenubarComponent implements OnInit {
 
     isLoggedIn: Observable<boolean> | any;
-
+ 
     constructor(private authService: AuthService) { }
 
     ngOnInit() {

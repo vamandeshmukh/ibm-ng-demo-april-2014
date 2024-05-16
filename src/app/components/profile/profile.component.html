@@ -10,9 +10,10 @@
             <p>Last Name: {{profileData.lastName}}</p>
             <p>Email: <a href="mailto:{{profileData.email}}">{{profileData.email}}</a></p>
             <p>Phone: {{profileData.phone}}</p>
+            <p>Aadhaar: {{profileData.aadhaar}}</p>
         </div>
         <div style="flex: 1;">
-            <img style="vertical-align: baseline;" [src]="profileData.avatar" [alt]="profileData.firstName">
+            <img height="300px" [src]="profileData.avatar" [alt]="profileData.firstName">
         </div>
     </div>
     <hr />

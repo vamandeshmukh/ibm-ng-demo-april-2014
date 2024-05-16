@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +23,7 @@ export class AuthService {
   }
 
   login(token: string): void {
+    // console.log(token);
     if (this.isBrowser()) {
       localStorage.setItem('authToken', token);
       this.loggedIn.next(true);
@@ -39,3 +41,4 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 }
+

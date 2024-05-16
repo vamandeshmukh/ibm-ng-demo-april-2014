@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { FormBuilder } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent {
 
   postLoginMessage: string = '';
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private fb: FormBuilder, private userService: UserService, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -33,6 +34,7 @@ export class LoginComponent {
           next: (response) => {
             console.log(response);
             this.userService.setProfile(response.user); // save data to profile 
+            this.authService.login(response.token);
             this.postLoginMessage = `Hi ${response.user.username}! You've logged in successfully. Showing your profile....`;
             this.loginForm.reset();
             setTimeout(() => {
