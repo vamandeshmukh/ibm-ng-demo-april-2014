@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ibm-frontend-angular
+  name: ibm-ng-app
 spec:
   replicas: 2
   selector:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ibm-ng-app
-          image: your-docker-hub-repo/ibm-ng-app
+          image: vamandeshmukh/ibm-ng-app
           ports:
             - containerPort: 80
           livenessProbe:

@@ -45,7 +45,7 @@ pipeline {
                 script {
                     kubernetesDeploy(
                         configs: 'deployment.yaml',
-                        kubeconfigId: env.KUBECONFIG_CREDENTIALS_ID
+                        kubeconfigId: '48d22aab-6f63-4d35-987a-223fe329d0ea'
                     )
                 }
             }
@@ -58,4 +58,3 @@ pipeline {
         }
     }
 }
-
