@@ -17,9 +17,9 @@ pipeline {
         stage('Build Angular App') {
             steps {
                 script {
-                    docker.image('node:Node').inside {
-                        bat 'npm install'
-                        bat 'npm run build --prod'
+                    docker.image('node:20').inside {
+                        sh 'npm install'
+                        sh 'npm run build --prod'
                     }
                 }
             }
