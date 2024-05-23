@@ -1,4 +1,3 @@
-/* groovylint-disable CompileStatic, NestedBlockDepth */
 pipeline {
     agent any
 
@@ -45,7 +44,7 @@ pipeline {
                 script {
                     kubernetesDeploy(
                         configs: 'deployment.yaml',
-                        kubeconfigId: '48d22aab-6f63-4d35-987a-223fe329d0ea'
+                        kubeconfigId: env.KUBECONFIG_CREDENTIALS_ID
                     )
                 }
             }
