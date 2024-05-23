@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/vamandeshmukh/ibm-ng-demo-april-2014.git'
+                git branch: 'main', url: 'https://github.com/vamandeshmukh/ibm-ng-demo-april-2014.git'
             }
         }
         stage('Build Angular App') {
