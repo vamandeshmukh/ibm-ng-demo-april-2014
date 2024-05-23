@@ -6,15 +6,15 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: ibm-frontend-angular
+      app: ibm-ng-app
   template:
     metadata:
       labels:
-        app: ibm-frontend-angular
+        app: ibm-ng-app
     spec:
       containers:
-        - name: angular-app
-          image: your-docker-hub-repo/04-ibm-frontend-angular:latest
+        - name: ibm-ng-app
+          image: your-docker-hub-repo/ibm-ng-app
           ports:
             - containerPort: 80
           livenessProbe:

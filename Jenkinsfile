@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_HUB_REPO = 'vamandeshmukh/ibm-ng-demo-april-2014'
         DOCKER_HUB_CREDENTIALS_ID = '59bf9b2c-2a1e-4afa-84c8-874c32e0b9b3'
-        KUBECONFIG_CREDENTIALS_ID = 'kubeconfig-credentials-id'
+        KUBECONFIG_CREDENTIALS_ID = '48d22aab-6f63-4d35-987a-223fe329d0ea'
     }
 
     stages {
