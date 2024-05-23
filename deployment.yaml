@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ibm-frontend-angular
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ibm-frontend-angular
+  template:
+    metadata:
+      labels:
+        app: ibm-frontend-angular
+    spec:
+      containers:
+        - name: angular-app
+          image: your-docker-hub-repo/04-ibm-frontend-angular:latest
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
+
