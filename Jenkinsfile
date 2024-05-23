@@ -1,3 +1,4 @@
+/* groovylint-disable CompileStatic, NestedBlockDepth */
 pipeline {
     agent any
 
